@@ -14,7 +14,7 @@ const Welcome = () => {
   if (!session) return null;
 
   return (
-    <Layout>
+    <Layout title="Welcome">
       <h1 className="text-5xl font-bold text-white max-w-xl tracking-wider">
         Welcome <br />
         {session.user.name}
