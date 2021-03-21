@@ -5,10 +5,16 @@ import { useRouter } from "next/router";
 const Layout = (props) => {
   const [session] = useSession();
   const router = useRouter();
+  const title = props.title;
 
   useEffect(() => {
     if (session) router.push("/welcome");
   }, [session]);
+
+  useEffect(() => {
+    console.log(title);
+    document.title = title;
+  }, [title]);
 
   const handleLoginClick = () => {
     if (session) signOut();
@@ -23,7 +29,7 @@ const Layout = (props) => {
           "linear-gradient(rgb(0 0 0 / 50%), rgb(49 45 45 / 50%)), url('/bg.jpg')",
       }}
     >
-      <header className="flex justify-between items-center absolute top-0 py-4 w-full md:px-0 px-6">
+      <header className="flex justify-between items-center absolute top-0 py-4 w-full px-6">
         <img className="w-40 h-16" src="/logo.svg" />
         <button
           className="flex items-center px-6 py-2 bg-netflix-red text-white rounded text-xl"
